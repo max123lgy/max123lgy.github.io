@@ -16,26 +16,24 @@
   <meta name="author" content="max123lgy">
   <meta name="keywords" content="嵌入式,linux,实时性操作系统,硬件,前端,后端,建模">
   
-    <meta name="description" content="背景说明 在之前用UCOS III做毕业设计的时候，课题要求为运用DS18B20测量温度并且实时在LCD上进行显示。代码烧录后发现温度测量不正常，但是裸机运行则温度测量正常，并且LCD显示屏初始化会导致线程卡死的状况。后一直在网上查找相关的解决方案，如图1所示。">
+    <meta name="description" content="这是一篇加密博文，请输入密码后查看">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UCOSIII微秒延迟干扰时序问题">
-<meta property="og:url" content="http://example.com/2023/11/02/diary-20231102/index.html">
+<meta property="og:title" content="kernel移植">
+<meta property="og:url" content="http://example.com/2023/12/21/diary-20231221-kernel/index.html">
 <meta property="og:site_name" content="max123lgy的博客">
-<meta property="og:description" content="背景说明 在之前用UCOS III做毕业设计的时候，课题要求为运用DS18B20测量温度并且实时在LCD上进行显示。代码烧录后发现温度测量不正常，但是裸机运行则温度测量正常，并且LCD显示屏初始化会导致线程卡死的状况。后一直在网上查找相关的解决方案，如图1所示。">
+<meta property="og:description" content="这是一篇加密博文，请输入密码后查看">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/assets/blogImg/P20231102/P20231102-01.webp">
-<meta property="article:published_time" content="2023-11-02T08:38:00.000Z">
-<meta property="article:modified_time" content="2023-11-19T06:44:59.304Z">
+<meta property="article:published_time" content="2023-12-21T02:21:00.000Z">
+<meta property="article:modified_time" content="2023-12-21T16:01:12.034Z">
 <meta property="article:author" content="max123lgy">
-<meta property="article:tag" content="ucos">
+<meta property="article:tag" content="kernel">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/assets/blogImg/P20231102/P20231102-01.webp">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>UCOSIII微秒延迟干扰时序问题 - max123lgy的博客</title>
+  <title>kernel移植 - max123lgy的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +228,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="UCOSIII微秒延迟干扰时序问题"></span>
+            <span id="subtitle" data-typed-text="kernel移植"></span>
           
         </div>
 
@@ -241,8 +239,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-02 16:38" pubdate>
-          2023年11月2日 下午
+        <time datetime="2023-12-21 10:21" pubdate>
+          2023年12月21日 上午
         </time>
       </span>
     
@@ -253,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          481 字
+          1.9k 字
         
       </span>
     
@@ -264,7 +262,7 @@
         
         
         
-          5 分钟
+          17 分钟
         
       </span>
     
@@ -308,38 +306,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">UCOSIII微秒延迟干扰时序问题</h1>
+            <h1 id="seo-header">kernel移植</h1>
             
             
-              <div class="markdown-body">
-                
-                <h2 id="背景说明">背景说明</h2>
-<p>在之前用UCOS III做毕业设计的时候，课题要求为运用DS18B20测量温度并且实时在LCD上进行显示。代码烧录后发现温度测量不正常，但是裸机运行则温度测量正常，并且LCD显示屏初始化会导致线程卡死的状况。后一直在网上查找相关的解决方案，如图1所示。</p>
-<span id="more"></span>
-<p><img src="/assets/blogImg/P20231102/P20231102-02.png" srcset="/img/loading.gif" lazyload alt=""><br>
-<img src="/assets/blogImg/P20231102/P20231102-03.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<center>图1 相关问题</center>
-Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG。产生原因其实就是我一直引用正点原子的延迟库，正点原子的微妙延迟函数不太准问题。
-<h2 id="问题产生原因">问题产生原因</h2>
-<p>DS18B20为单总线通信，单总线通信设备内部有多个delay_us()不太适用于UCOS里使用，尤其是多任务的程序，因为没有时钟线来同步信号，所以任务切换的时候会干扰通信的时序。</p>
-<h2 id="具体解决方法">具体解决方法</h2>
-<h3 id="临界区读取温度">临界区读取温度</h3>
-<p>如图2所示。<br>
-<img src="/assets/blogImg/P20231102/P20231102-04.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<center> 图2 临界区读取温度</center>
-<h3 id="加入定时器重新定义微妙延迟函数，替换原有的所有微妙延迟函数">加入定时器重新定义微妙延迟函数，替换原有的所有微妙延迟函数</h3>
-<p>正点原子原始微妙延迟函数如图3所示，修改后的函数如图4图5所示。相关延迟函数文件下载在<a target="_blank" rel="noopener" href="https://github.com/max123lgy/Delay">Github</a>。<br>
-<img src="/assets/blogImg/P20231102/P20231102-05.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<center> 图3 正点原子微妙函数</center>
-<p><img src="/assets/blogImg/P20231102/P20231102-06.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<center> 图4 定时器的初始化</center>
-<p><img src="/assets/blogImg/P20231102/P20231102-05.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<center> 图5 微妙延迟重新配置</center>
-<h2 id="总结">总结</h2>
-<p>基于UCOS的项目设计中应尽可能少使用单总线设备。多采用i2c通信设备设计方案。</p>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="b4b9f492e41a917fdbe788c077c2725cff92bc39b42bdb9a0393e55f5737b460">a57369fb30db7996c00406beea3341e23564c071015318cb09d0fc700fbb39975c78aa1e5cfc76fb9b1b028b4642fecb9734c93c77c90128a2c442a9597ca5d53e2ca314f77b0c2b73b43cfe002cc1a5d70e747703396eb60edf600773492791f410ad3ec766f55e1de7e45d166104b306d4a20dcaceb1a2596c24127f4b6c1a7bac8653d24ab0275b970b137fdcb55832af3537b4bff66562d54c151b389a38a1a78d7cbbce9d807274eccfe5777cd1fae6605babab63a3c591fb2d6aab51705dc201c2e9d4fd21ea6f96b5ba560677eb4195d0eed5a4ebcf13f4928386d2c98d03b2528140ecf71c51bf947758ac84f8fd6ac9794e8a5dce43b800327139347c989a9d26f7f35645fa9a2e7b817ad16f00757b7e9c21bad816e754e5a7eec9c9310e774860b740b1f21a94d2922c2759800148d48e93f7f5c2c45c7b1f1dafe87065228fc1644c46a2b1f9f0c323e4e5db5cf57b3871ee0781a53ea463949907b521705dcdbe87d7658edce6ddf427a730ac4b7a846dbd3d4d6ba9572d99d8497085f3e61281b019929ccd595a5238d4be15aa58e6d822014045450e353919e8b9dce3e61a39c864a7cbbd3bf47c64088a8d33f2dc64d179afb5bba273e54187a66b27d8113c0a94e4105978de6d9bc533168ffb4d5cae316195be2ee37989a27396e3e71dc9cf989a29ea743599d259e2e32843bf343954fd2ccf8c0fb7e7b239125c93c0e1a294cd4de61d752539ed14751ec73ddd7a59afa0b4f419c4ffd0716cda14ee7acab194a3d05f88105350eafee1b1a2b285343aad923db9bbe65b3364410cea31a82266ce7dc6ff1d005c58dca7bd3c4a0f9c8b66b0d6749354ce7d2f705d6621a2ea20ca1e2cc10cb5fa3b5980ec33f0f236ca473fde6bc891bdc654356bdb53b823079fbbc2bf92386fe3c5f1af0510debdb84668556959d1a89b39fb6a17eb7339fce702f3f45d4cbaa43369d479fba8a49098b23a422238f08b6aa8d237445d9b222e5fe4646b0eb81fbe05314e29162ac74b6f4c49f1c08cdb43bd28d8e2175c7ffcc349f44628df579c8d31361d302dbc9ad0616d16139e662ec932a599079dcfb9bfa9bcee284e4b44691c7fbfe4981da61621bd3ed160474882ad3d9542529c498efdd4c5ab9ddcbc424020f582da0e83bfaa10ce9a0dc2e5106757fb2b8fc18052a5165e91903ffb27ea9e36dc2c79b46aec06da6f1e69a821a0e8650e37195a0bc9a0da265462fa3c8b2fa08d0f42b5fff946013bd9c80a7e5c34402dcb80946468487bbd85ff80c2371944d3e9017494962319b4689df159a06e85c5a5ef3a86825b1077f20be7698b4db1e44a1e267db8221762</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这里需要密码才能访问。</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -355,7 +340,7 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="category-chain-item">嵌入式系统</a>
+  <a href="/categories/%E6%9D%82%E8%B0%88/" class="category-chain-item">杂谈</a>
   
   
 
@@ -370,7 +355,7 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/ucos/" class="print-no-link">#ucos</a>
+        <a href="/tags/kernel/" class="print-no-link">#kernel</a>
       
     </div>
   
@@ -382,8 +367,8 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>UCOSIII微秒延迟干扰时序问题</div>
-      <div>http://example.com/2023/11/02/diary-20231102/</div>
+      <div>kernel移植</div>
+      <div>http://example.com/2023/12/21/diary-20231221-kernel/</div>
     </div>
     <div class="license-meta">
       
@@ -395,7 +380,7 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月2日</div>
+          <div>2023年12月21日</div>
         </div>
       
       
@@ -427,9 +412,9 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/21/diary-20231221-uboot/" title="uboot移植">
+                      <a href="/2023/12/21/diary-20231221-rootfs/" title="rootfs移植">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">uboot移植</span>
+                        <span class="hidden-mobile">rootfs移植</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -437,8 +422,8 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/05/diary-20220305/" title="海岸线骑行">
-                        <span class="hidden-mobile">海岸线骑行</span>
+                      <a href="/2023/12/21/diary-20231221-uboot/" title="uboot移植">
+                        <span class="hidden-mobile">uboot移植</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -625,6 +610,23 @@ Opendv论坛上有很多类似问题。捣鼓了几天，终于解决这个BUG�
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass') || document.querySelector('hbe-prefix')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   

@@ -4,6 +4,81 @@
   
   
   <entry>
+    <title>rootfs移植</title>
+    <link href="/2023/12/21/diary-20231221-rootfs/"/>
+    <url>/2023/12/21/diary-20231221-rootfs/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="19acbe31da61cc74593f8f32433ee4f65477cf3c749a742d92ecae24a574cee6">a57369fb30db7996c00406beea3341e2471830c92ee06680142f6fe276c45801c54ccb42df6acb339d8c4f7d26f3fca41e857dad928a5c055f074a0960b83049d83da4243d90655bb74589c3a754567804a6769982cb257fe263197df9bbe098e9ad0cb9017097ae044a6efd09009aedd4da541253201860778ff2f5a1fa6b1b8a537b57ab7f30a6a57cfb948b10fb7700d93f9423038a5c3dee4fe6cd4def5fc8de5d100d42c3920de51ade6a631df8791247d59706837045cab4f648d82b20ad545adfdec82b1a41b473716a9e0bfe3499b27a6fe31a603123334011187a60c9a94ffd97ea2b6166f3a89149913eef34e8cd30a1ebaa635519025333e6938916a4147f78479ccc806e8a0791d35f44b8318e1e9f2d46025e1a88a340d05f5455be0a84713d3fa03a74b9a34a0b537e7999596a51afd4523862655e422f1873ae3c4a686122a03b5501ebf8ccfa454323bf13b10e60c3885cf4729f8e2a69ee69b72b4579abed788bc8577011a7d38e20fea8666c249cb6fe95e21d97e089c53e972e7970147d29aac823d028bb572cf0c39740ceb825f12955529e7173a5f0f851c5e7c6b2cf751945d0a1594bcfc42121d0588f12df2d151514055fa7668e88e125f5f57bf417282a12e97254cf8f7ab823c1539d8f513d0d47262fcf744bce340ea7f17c5f6b7b89d24f9fd38d5db4326769c61e649db515e6e5632ff7f40189b62bb7c5b9490f27c9f25cdfeff8d0dc39fa3a1ea88e7d57f21c890ebf7bba42c28124cecd006aea853478042ff3ccb32ea6434adc7bc18276ec838e1b5effc745c482864515949a4fc15cc29e71</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这里需要密码才能访问。</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>rootfs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>kernel移植</title>
+    <link href="/2023/12/21/diary-20231221-kernel/"/>
+    <url>/2023/12/21/diary-20231221-kernel/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="b4b9f492e41a917fdbe788c077c2725cff92bc39b42bdb9a0393e55f5737b460">a57369fb30db7996c00406beea3341e23564c071015318cb09d0fc700fbb39975c78aa1e5cfc76fb9b1b028b4642fecb9734c93c77c90128a2c442a9597ca5d53e2ca314f77b0c2b73b43cfe002cc1a5d70e747703396eb60edf600773492791f410ad3ec766f55e1de7e45d166104b306d4a20dcaceb1a2596c24127f4b6c1a7bac8653d24ab0275b970b137fdcb55832af3537b4bff66562d54c151b389a38a1a78d7cbbce9d807274eccfe5777cd1fae6605babab63a3c591fb2d6aab51705dc201c2e9d4fd21ea6f96b5ba560677eb4195d0eed5a4ebcf13f4928386d2c98d03b2528140ecf71c51bf947758ac84f8fd6ac9794e8a5dce43b800327139347c989a9d26f7f35645fa9a2e7b817ad16f00757b7e9c21bad816e754e5a7eec9c9310e774860b740b1f21a94d2922c2759800148d48e93f7f5c2c45c7b1f1dafe87065228fc1644c46a2b1f9f0c323e4e5db5cf57b3871ee0781a53ea463949907b521705dcdbe87d7658edce6ddf427a730ac4b7a846dbd3d4d6ba9572d99d8497085f3e61281b019929ccd595a5238d4be15aa58e6d822014045450e353919e8b9dce3e61a39c864a7cbbd3bf47c64088a8d33f2dc64d179afb5bba273e54187a66b27d8113c0a94e4105978de6d9bc533168ffb4d5cae316195be2ee37989a27396e3e71dc9cf989a29ea743599d259e2e32843bf343954fd2ccf8c0fb7e7b239125c93c0e1a294cd4de61d752539ed14751ec73ddd7a59afa0b4f419c4ffd0716cda14ee7acab194a3d05f88105350eafee1b1a2b285343aad923db9bbe65b3364410cea31a82266ce7dc6ff1d005c58dca7bd3c4a0f9c8b66b0d6749354ce7d2f705d6621a2ea20ca1e2cc10cb5fa3b5980ec33f0f236ca473fde6bc891bdc654356bdb53b823079fbbc2bf92386fe3c5f1af0510debdb84668556959d1a89b39fb6a17eb7339fce702f3f45d4cbaa43369d479fba8a49098b23a422238f08b6aa8d237445d9b222e5fe4646b0eb81fbe05314e29162ac74b6f4c49f1c08cdb43bd28d8e2175c7ffcc349f44628df579c8d31361d302dbc9ad0616d16139e662ec932a599079dcfb9bfa9bcee284e4b44691c7fbfe4981da61621bd3ed160474882ad3d9542529c498efdd4c5ab9ddcbc424020f582da0e83bfaa10ce9a0dc2e5106757fb2b8fc18052a5165e91903ffb27ea9e36dc2c79b46aec06da6f1e69a821a0e8650e37195a0bc9a0da265462fa3c8b2fa08d0f42b5fff946013bd9c80a7e5c34402dcb80946468487bbd85ff80c2371944d3e9017494962319b4689df159a06e85c5a5ef3a86825b1077f20be7698b4db1e44a1e267db8221762</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这里需要密码才能访问。</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>kernel</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>uboot移植</title>
+    <link href="/2023/12/21/diary-20231221-uboot/"/>
+    <url>/2023/12/21/diary-20231221-uboot/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="ae7bbdbfdcce675700b8cc35fdb4f21665e86747169d41f2f19eca5e01114713">a57369fb30db7996c00406beea3341e22bcde4adccec5e8a2e0f37aad29c612c3901f6562726ef48277f8d2c327520e7a18a09cbb01f58e95adf2ebae1e470e7d0fc0591960a2750b446db7e3428666e976b0fe0df5093db6cbceaa371a418489ad0da14131315a156b64bc366f6004444580911ca60804ca3c3b7a5a02350c69418548c4042ddf27bd3cd05fb3c99e80ae20230ab9922943ee99ed1397aa6c6452d0065a7b89974acf22d6815f0fda8c7377238c04e8c15ab0ec26e01c8ff0da9583e3211e852a4c93b4d3486354f21350076262a64de6e26c117ca2b2c8cfa54780799b208a4dd7ee9a0d18513323805f89413aa88a4da7ff480f3f69e01bf8a7903eb3645f80dbbe70015f1cbfefee578d7ca91f7884b1a84e459a15f1a0b4dc80bdfc83602e47f1ead66c263d31d8b351874410cff36e27be02abca940a1b4d8b0e0e7668315e6659da7dd1ccd715f870d40ecb44fefa618918527c678ab8e13bfe60f62a88649d3c126795e9e4fed28fab4362c9dc774c5a9012059da6812888349ee4b001a7d498e9a6b74200df5b9082f1659d2d6d140b285c29b8f5596aad32b4c351e95f420bf52e4abc48be7ec5686cfdd3d30fda390648853fece2585a3e9cf440ef6865911108843c93255e9b816fc410fbbd7ea5e48415b76731033b359338d9846a30684a4110caf6ca71acdf0276fc1b67e7eb37d5f5fc46f5a25057b87526462823e665984ce2b028e32009fefc21ba3155eb64d8c980cf9276ce3b50d688f3d886c714fb239df4b35b5e7d961ef25bf1ae61b3c6c6da070510ab1959d558cae6391f469ee4fe0eb801dde1260f930741e2f441e2b7a0259</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这里需要密码才能访问。</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>u-boot</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>UCOSIII微秒延迟干扰时序问题</title>
     <link href="/2023/11/02/diary-20231102/"/>
     <url>/2023/11/02/diary-20231102/</url>
