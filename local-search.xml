@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>2023个人总结</title>
+    <link href="/2024/01/01/diary-20240101/"/>
+    <url>/2024/01/01/diary-20240101/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="1ead4d2c87f400f1e4b1ab8bc3cb8558611da9a95915387b53314890895003b8">a57369fb30db7996c00406beea3341e2d9ab7c6ed6feed33d9c8a032329312147e7139ac939ddd50ff6a0c454703e8f8925432391645852e4b905ed56881777cc685d9b192ec8cb5b592c91b1171971b350e46bf827b6bbe9d037b6464c867f278c5cd3bf6b5e8a9c42f5cc6a5510a935aaeb2aac35ad58dbefb31db5d039c6edf7d9e48a9461ab77a9c085718823d5cd93a8229b6120651123975fba8b62b67084e4486aa68fc4a21ebb699525eba8470e848afb2f3ce891888a4ccb9854e568784d1d486fa03af6886aac531fcdbf6aded392b81f9743d74a9acbdde83b25b4de2c689af6a5183e7c54f210d353cef58e824d39358c0c22a122bdc47cdcf8ec9b17bb149aa11358db554b98f64965ba841f1bdd5384c67f62b798c20882d10ed00a7189013f5fc029eadacd50a12aabc9d75fe43e0e136ed2a965c2923a7e28e6e4130f70ba9c968de55ad8b8d6ef51d464db195faf17a7a3e8c1dbed7a6087dd8a009994feeb163d1f656ddb37a3b58903f600359d3972ae3f6029bb6b86aa5c91e85a3437676d976bb5dda4b46aa3e00470aeb29fb4ea7f8f3271ad7d795a5b77a584d6aa7dd1e586b2b715e9707410ccebc68167e85e6664230de0d9c189a42a11c76a29e01144461b062130adba54e80342df4f3398ea24124ef2cd8705c2523e51c278fe1cdc369550f2ddedc0add12d516c0aa82d27637b881926107e4b1d2c3868523108957e4f3de88b25be41a8ff4a98eb291a936eb746fdb16faf3c05d545e56ed58905fd9e09a31d25109e80622f71516498627392843f33ca3b28b13de2534b7592c03ddeae1e87b7845343bef432606f9c330bbbc2c6395d7d11a69473cdf648309952471f39174af7e36c5900c61d8c6b34ca9d6d919f847565c8f2111980ea459b2bdafa26ae4e9d003006d7b7d47eb4c3ecc2c204883cb3740324cdf6852a2857bf52812b48ebd99ed02d5de64623d3d93ae4332a56a6571fe9b2629cd3f84343895be9697251a14055f5b581ca978e59fb27260287ba8931fd21e19ddabf551a6d0b152b1c890344d86b3fd5a382909fa2e157f2b589bbfc76fa637ca83759b52f924a2df204c03c625e00172f768688a2afcf2b97917ae8298b4e7784a5a9189602c02ef0a8f0b25a6e9e1fd7ba423c81167553eef10d1392738111967aef5011c88b3be2ed9d3702278d03194af2f058f1c398be9b20db61dde418f780a3ca41e75970bb0440430d9bf5c166446c387484a8d443704b2a94e67205638b266d1530913330edf05dbfabcbc9781eb5deebb4e072d5c97ac5213725b8b98737c392b1be88c01d108caf87b6448cb7f7f5709a56343035eef62c1b690f9f3a3c43fbe891223b6a5</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">这里需要密码才能访问。</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>杂谈</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>2024</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rootfs移植</title>
     <link href="/2023/12/21/diary-20231221-rootfs/"/>
     <url>/2023/12/21/diary-20231221-rootfs/</url>
